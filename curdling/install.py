@@ -305,8 +305,7 @@ class Install(Service):
             time.sleep(0.5)
 
     def run(self):
-        packages = self.retrieve_and_build()
-        if packages:
+        if packages := self.retrieve_and_build():
             self.install(packages)
         if not self.mapping.errors and self.conf.get('upload'):
             self.upload()

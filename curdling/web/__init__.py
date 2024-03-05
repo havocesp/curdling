@@ -35,8 +35,7 @@ class HtPasswd(object):
 
         with open(self.path) as fd:
             for line in fd.read().splitlines():
-                line = line.split('#')[0].strip()
-                if line:
+                if line := line.split('#')[0].strip():
                     username, password = line.split(':', 1)
                     users[username] = password
         return users

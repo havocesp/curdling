@@ -109,8 +109,7 @@ def expand_requirements(open_file):
 
         # Handling special lines that start with `-r`, so we can have files
         # including other files.
-        include = INCLUDE_PATTERN.findall(req)
-        if include:
+        if include := INCLUDE_PATTERN.findall(req):
             requirements.extend(expand_requirements(io.open(include[0])))
             continue
 

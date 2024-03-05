@@ -34,8 +34,7 @@ PKG_NAMES = [
 
 def pkg_name(name):
     for expr in PKG_NAMES:
-        result = re.findall(expr, name)
-        if result:
+        if result := re.findall(expr, name):
             return result[0]
 
 

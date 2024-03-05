@@ -91,8 +91,7 @@ def http_retrieve(pool, url, attempt=0):
 
 
 def get_opener():
-    http_proxy = os.getenv('http_proxy')
-    if http_proxy:
+    if http_proxy := os.getenv('http_proxy'):
         parsed_url = compat.urlparse(http_proxy)
         proxy_headers = util.get_auth_info_from_url(
             http_proxy, proxy=True)
@@ -116,8 +115,7 @@ class AggregatingLocator(locators.AggregatingLocator):
         pkg = util.parse_requirement(requirement)
         for locator in self.locators:
             versions = locator.get_project(pkg.name)
-            packages = find_packages(locator, pkg, versions)
-            if packages:
+            if packages := find_packages(locator, pkg, versions):
                 return packages
 
 
@@ -139,8 +137,7 @@ class PyPiLocator(locators.SimpleScrapingLocator, ComparableLocator):
         for package_name in options:
             url = compat.urljoin(self.base_url, '{0}/'.format(
                 compat.quote(package_name)))
-            found = self._fetch(url, package_name)
-            if found:
+            if found := self._fetch(url, package_name):
                 return found
 
     def _visit_link(self, project_name, link):
