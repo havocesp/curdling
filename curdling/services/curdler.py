@@ -1,4 +1,3 @@
-from __future__ import absolute_import, print_function, unicode_literals
 from ..exceptions import UnpackingError, BuildError, NoSetupScriptFound
 from ..util import execute_command
 from .base import Service

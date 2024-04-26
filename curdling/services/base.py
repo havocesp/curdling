@@ -1,4 +1,3 @@
-from __future__ import absolute_import, print_function, unicode_literals
 from ..signal import Signal, SignalEmitter
 from ..util import logger
 from distlib.compat import queue

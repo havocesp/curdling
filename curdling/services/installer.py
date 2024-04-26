@@ -1,4 +1,3 @@
-from __future__ import absolute_import, print_function, unicode_literals
 from ..util import parse_requirement
 from .base import Service
 from distlib.wheel import Wheel
