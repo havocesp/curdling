@@ -25,6 +25,7 @@ import hashlib
 import logging
 import subprocess
 import urllib3
+from security import safe_command
 
 
 INCLUDE_PATTERN = re.compile(r'-r\s*\b([^\b]+)')
@@ -150,7 +151,7 @@ def get_auth_info_from_url(url, proxy=False):
 
 
 def execute_command(name, *args, **kwargs):
-    command = subprocess.Popen((name,) + args,
+    command = safe_command.run(subprocess.Popen, (name,) + args,
         env=os.environ,
         stderr=subprocess.PIPE, stdout=subprocess.PIPE,
         **kwargs)
